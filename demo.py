@@ -147,8 +147,12 @@ for number,name in div_info:
 
     fig,ax = plt.subplots()
     fig.suptitle(f"Census Division: {name}")
-    sel = sel.sort_values('Name',ascending=False)
+    sel = sel.sort_values('percent')
     sel.plot.barh(x='Name',y='percent',ax=ax,legend=None)
     ax.set_ylabel(None)
-    ax.set_xlabel('Population in Millions')
+    ax.set_xlabel('Percent of division')
+    if number=='5':
+        fig.savefig(f'div{number}-1before.png')
     fig.tight_layout()
+    if number=='5':
+        fig.savefig(f'div{number}-2after.png')
